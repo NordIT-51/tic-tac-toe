@@ -61,14 +61,17 @@ async def gamer(call: aiogram.types.CallbackQuery):
     coord = int(call.data) - 1
     if ga[coord // 3][coord % 3] == ' ':
         ga[coord // 3][coord % 3] = 'X'
-        await bot.edit_message_text(call.message.text, call.message.chat.id, call.message.message_id, reply_markup=make_keyboard())
+        await bot.edit_message_text(call.message.text, call.message.chat.id, call.message.message_id, \
+                                    reply_markup=make_keyboard())
         if is_win('X'):
-            await bot.edit_message_text('Ты выиграл!', call.message.chat.id, call.message.message_id, reply_markup=make_keyboard())
+            await bot.edit_message_text('Ты выиграл!', call.message.chat.id, call.message.message_id, \
+                                        reply_markup=make_keyboard())
             status_game = False
             ga = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
             return
         if not is_not_draw():
-            await bot.edit_message_text('Ничья!', call.message.chat.id, call.message.message_id, reply_markup=make_keyboard())
+            await bot.edit_message_text('Ничья!', call.message.chat.id, call.message.message_id, \
+                                        reply_markup=make_keyboard())
             status_game = False
             ga = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
             return
@@ -80,18 +83,21 @@ async def gamer(call: aiogram.types.CallbackQuery):
                                             reply_markup=make_keyboard())
                 break
         if is_win('O'):
-            await bot.edit_message_text('Я выиграл!', call.message.chat.id, call.message.message_id, reply_markup=make_keyboard())
+            await bot.edit_message_text('Я выиграл!', call.message.chat.id, call.message.message_id, \
+                                        reply_markup=make_keyboard())
             status_game = False
             ga = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
             return
         if not is_not_draw():
-            await bot.edit_message_text('Ничья!', call.message.chat.id, call.message.message_id, reply_markup=make_keyboard())
+            await bot.edit_message_text('Ничья!', call.message.chat.id, call.message.message_id, \
+                                        reply_markup=make_keyboard())
             status_game = False
             ga = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
             return
     else:
         await bot.edit_message_text('Вы не можете поставить сюда крестик!',
-                                    call.message.chat.id, call.message.message_id, reply_markup=make_keyboard())
+                                    call.message.chat.id, call.message.message_id, \
+                                    reply_markup=make_keyboard())
         return
 
 
